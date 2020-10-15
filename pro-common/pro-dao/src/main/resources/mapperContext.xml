@@ -21,12 +21,12 @@
     <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <!--<property name="configLocation" value="classpath:mybatis.xml"/>-->
-        <property name="typeAliasesPackage" value="com.pro.model.user"/>
+        <property name="typeAliasesPackage" value="com.yifuyou.model"/>
         <property name="mapperLocations" value="classpath:com/yifuyou/mapper/UserMapper.xml"/>
     </bean>
     <!-- 自动生成dao mapper -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.pro.mapper"/>
+        <property name="basePackage" value="com.yifuyou.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"/>
     </bean>
 

@@ -16,18 +16,17 @@
 </sql>
 
 
-
-    <select id="findById" resultType="users" parameterType="int">
+    <select id="findById" resultType="user" parameterType="int">
         SELECT * FROM t_user WHERE id=#{userId}
     </select>
 
-    <insert id="insert" parameterType="users">
+    <insert id="insert" parameterType="user">
         insert into t_user (id,name,password) values (NULLIF(#{userId},0),#{userName},#{passWord} )
     </insert>
     <delete id="deleteById" parameterType="int">
         DELETE FROM t_user WHERE id=#{userId};
     </delete>
-    <update id="update" parameterType="users">
+    <update id="update" parameterType="user">
         UPDATE t_user SET name=#{userName},password=#{passWord} WHERE id=#{userId}
     </update>
 
