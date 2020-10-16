@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="pro-dao" />
         <module name="pro-model" />
-        <module name="pro-service" />
         <module name="pro-web" />
       </profile>
     </annotationProcessing>

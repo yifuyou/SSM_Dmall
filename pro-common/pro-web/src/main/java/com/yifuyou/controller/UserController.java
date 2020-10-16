@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 
 @Controller
-@RequestMapping("/user/")
+@RequestMapping("user")
 public class UserController {
 
     @Autowired
@@ -28,7 +28,21 @@ public class UserController {
         ServiceResponse<Detuser> response=iUserService.login(username,password);
         if(response.isSuccess()){
             session.setAttribute(Const.CURRENT_USER,response.getData());
+
+            System.out.println(response);
         }
+        System.out.println("login+++++++++++++++++++++");
         return response;
     }
+
+
+
+  /*  @RequestMapping("*")
+    @ResponseBody
+    public Detuser test(){
+        System.out.println("=========test==============");
+       // return "6666";
+        return new Detuser("a","12580","email@!");
+    }*/
+
 }

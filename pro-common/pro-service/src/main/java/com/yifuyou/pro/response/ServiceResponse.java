@@ -1,14 +1,17 @@
 package com.yifuyou.pro.response;
 
-
-
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+/*
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude;*/
 
 import java.io.Serializable;
 
+
 //保证序列化json 的时候，如果是null的对象看，key也会消失
-@JsonInclude(value = JsonInclude.Include.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+//@JsonInclude( JsonInclude.Include.NON_NULL)
 public class ServiceResponse<T> implements Serializable {
 
     private int status;
@@ -35,7 +38,7 @@ public class ServiceResponse<T> implements Serializable {
         this.data = data;
     }
 
-@JsonIgnore
+    @JsonIgnore
     //使之不在序列号结果当中
     public boolean isSuccess(){
         return this.status == ResponseCode.SUCCESS.getCode();
