@@ -31,12 +31,15 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <!--
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
-    -->
+
 
     <mvc:annotation-driven/>
-
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/user/**"/>
+            <bean class="com.yifuyou.pro.util.TokenUtil"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <!-- 配置内部资源视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

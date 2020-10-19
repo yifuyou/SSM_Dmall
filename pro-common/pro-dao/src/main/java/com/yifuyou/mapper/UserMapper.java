@@ -1,23 +1,19 @@
 package com.yifuyou.mapper;
 
 
-import com.yifuyou.mapper.base.BaseMapper;
-import com.yifuyou.model.Detuser;
-import com.yifuyou.model.User;
 import org.apache.ibatis.annotations.Param;
 
-public interface UserMapper extends BaseMapper<User> {
+import java.util.List;
+import java.util.Map;
 
-     User findById(Integer id);
-
-     int deleteById(Integer id);
-
-     int update(User t);
-
-     int insert(User t);
+public interface UserMapper {
 
 
+     //检查该用户名是否已注册
      int checkUsername(String username);
 
-     Detuser selectLogin(@Param("username") String username, @Param("password") String password);
+     Map<String, Object> selectLogin(@Param("username") String username, @Param("password") String password);
+
+     List<Map<String, Object>> selectUsers(Map map);
+
 }

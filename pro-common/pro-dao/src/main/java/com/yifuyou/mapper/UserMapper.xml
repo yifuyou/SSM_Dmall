@@ -1,46 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yifuyou.mapper.UserMapper">
-    <resultMap id="BaseResultMap" type="com.yifuyou.model.Detuser">
-        <constructor>
-      <!--      <idArg column="mg_id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
-            <arg column="role_id" jdbcType="VARCHAR" javaType="java.lang.String"/>-->
-            <arg column="mg_name" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="mg_mobile" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="mg_email" jdbcType="VARCHAR" javaType="java.lang.String"/>
-      <!--      <arg column="token" jdbcType="VARCHAR" javaType="java.lang.String"/>-->
-        </constructor>
-    </resultMap>
-<sql id="Base_Column_List">
-    mg_name,mg_mobile,mg_email
-</sql>
-
-
-    <select id="findById" resultType="user" parameterType="int">
-        SELECT * FROM t_user WHERE id=#{userId}
-    </select>
-
-    <insert id="insert" parameterType="user">
-        insert into t_user (id,name,password) values (NULLIF(#{userId},0),#{userName},#{passWord} )
-    </insert>
-    <delete id="deleteById" parameterType="int">
-        DELETE FROM t_user WHERE id=#{userId};
-    </delete>
-    <update id="update" parameterType="user">
-        UPDATE t_user SET name=#{userName},password=#{passWord} WHERE id=#{userId}
-    </update>
 
     <select id="checkUsername" resultType="int" parameterType="string">
         SELECT COUNT(1) FROM sp_manager
         WHERE mg_name=#{username}
     </select>
 
-    <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
+    <select id="selectLogin" resultType="java.util.HashMap" parameterType="map">
         SELECT
-        <include refid="Base_Column_List"/>
+        mg_id,role_id,mg_name,mg_mobile,mg_email
         FROM sp_manager
         WHERE mg_name=#{username}
         and mg_pwd=#{password}
+    </select>
+
+    <select id="selectUsers" resultType="java.util.HashMap">
+        SELECT
+        mg_id,mg_name,mg_mobile,mg_email,mg_state,role_name
+        FROM
+        sp_manager JOIN sp_role role ON sp_manager.role_id=role.role_id
+        WHERE 1=1
+        <if test="query != null">and mg_name LIKE '%${query}%'</if>
+        limit #{indexnum},#{pagesize}
     </select>
 
 
