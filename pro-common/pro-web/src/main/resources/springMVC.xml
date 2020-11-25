@@ -33,22 +33,21 @@
 
 
 
-    <mvc:annotation-driven/>
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/user/**"/>
             <bean class="com.yifuyou.pro.util.TokenUtil"></bean>
         </mvc:interceptor>
     </mvc:interceptors>
-
+    <mvc:annotation-driven/>
     <!-- 配置内部资源视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/"/>
+        <property name="prefix" value="/WEB-INF/lib/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
-
     <!-- 开启静态资源的访问 -->
+    <mvc:resources mapping="/lib/**" location="/WEB-INF/lib/"/>
     <mvc:default-servlet-handler/>
 
 

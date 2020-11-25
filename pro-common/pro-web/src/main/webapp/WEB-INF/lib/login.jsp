@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -7,5 +8,12 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <h:outputLabel value="Hello, world"/>
+    <form action="../login.do" method="post">
+        <input title="账号：" name="username"/>
+        <input title="密码" name="password" type="password"/>
+        <button type="submit">登录</button>
+    </form>
+
+
 </f:view>
 </html>

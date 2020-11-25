@@ -32,10 +32,20 @@
   </init-param>
   <load-on-startup>1</load-on-startup>
 </servlet>
-<servlet-mapping>
-  <servlet-name>dispatcherServlet</servlet-name>
-    <url-pattern>*.do</url-pattern>
-</servlet-mapping>
+
+
+  <servlet-mapping>
+    <servlet-name>dispatcherServlet</servlet-name>
+    <url-pattern>/</url-pattern >
+  </servlet-mapping>
+
+  <!--
+  <servlet-mapping>
+    <servlet-name>dispatcherServlet</servlet-name>
+      <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+
+  -->
 
 
 

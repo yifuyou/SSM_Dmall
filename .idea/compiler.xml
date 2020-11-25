@@ -6,9 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="pro-dao" />
-        <module name="pro-model" />
         <module name="pro-web" />
+        <module name="pro-dao" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -18,5 +17,12 @@
       <module name="pro-service" target="1.8" />
       <module name="pro-web" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="pro-dao" options="-extdirs F:\codes\ssm_mall\SSM_Dmall\pro-common\pro-dao/src/main/webapp/WEB-INF/lib" />
+      <module name="pro-model" options="-extdirs F:\codes\ssm_mall\SSM_Dmall\pro-common\pro-model/src/main/webapp/WEB-INF/lib" />
+      <module name="pro-web" options="-extdirs F:\codes\ssm_mall\SSM_Dmall\pro-common\pro-web/src/main/webapp/WEB-INF/lib" />
+    </option>
   </component>
 </project>
